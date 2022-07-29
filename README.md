@@ -15,8 +15,8 @@ docker run -d --rm -p 1007:1007 gm-exam
 For local testing, use command `go test -v` to run the test.
 
 ## Links
-The app is also upload to heroku, access the site using this [link](https://gm-exam.herokuapp.com/) `https://gm-exam.herokuapp.com`.  
-Get import postman collection using this link `https://www.getpostman.com/collections/fdff8f00bb68f534d345`.
+The app is also hosted at heroku, access the endpoints using this `https://gm-exam.herokuapp.com`.  
+Get import postman collection using this `https://www.getpostman.com/collections/fdff8f00bb68f534d345`.
 
 ## Endpoints
 - **/users** : get list of current users (for ease of use only)  
