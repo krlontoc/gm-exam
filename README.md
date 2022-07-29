@@ -12,16 +12,16 @@ docker run -d --rm -p 1007:1007 gm-exam
 ```
 
 ## Routes
-- /users : get list of current users
+- **/users** : get list of current users  
 Method: `GET`  
-URL: `/users`
+URL: `/users`  
 cURL:
 ```
 curl --location --request GET 'localhost:1007/users'
 ```
-- /auth/v1/login : get access token
-Method: `POST`
-URL: `/auth/v1/login`
+- **/auth/v1/login** : get access token  
+Method: `POST`  
+URL: `/auth/v1/login`  
 cURL:
 ```
 curl --location --request POST 'localhost:1007/auth/v1/login' \
