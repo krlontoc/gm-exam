@@ -19,7 +19,7 @@ The app is also upload to heroku, access the site using this [link](https://gm-e
 Get postman collection [here](https://www.getpostman.com/collections/2cdc08395f26e9047e4f) `https://www.getpostman.com/collections/2cdc08395f26e9047e4f`.
 
 ## Routes
-- **/users** : get list of current users (for ease of use only)
+- **/users** : get list of current users (for ease of use only)  
 Method: `GET`  
 URL: `/users`  
 cURL:
@@ -39,7 +39,7 @@ Response:
 }
 ```
 
-- **/auth/v1/login** : get access token, token will be use for the other routes.
+- **/auth/v1/login** : get access token, token will be use for the other routes.  
 Method: `POST`  
 URL: `/auth/v1/login`  
 cURL:
@@ -65,7 +65,7 @@ Response:
     "data": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWxpZCI6dHJ1ZSwic2Vzc2lvbiI6eyJpZCI6MSwiY3JlYXRlZF9hdCI6IjIwMjItMDctMjlUMTE6MTc6MTcuODU1NTE1OSswODowMCIsInVwZGF0ZWRfYXQiOiIyMDIyLTA3LTI5VDExOjE3OjE3Ljg1NTUxNTkrMDg6MDAiLCJmdWxsX25hbWUiOiJLdXJ0IFJ1c3NlbCIsImVtYWlsX2FkZHJlc3MiOiJrckBlbWFpbC5jb20ifSwiZXhwIjoxNjU5MDY2NDI0fQ.DIrKQBGpodI6CTfaohxqiyI0rG16UFYO1FivmfdqhvvoERqzzBwPZZipExzn264XguU6RGGDPsGohGwPg8rWpwRQoUsa5Ue5l-rs5WIH2Dxo-9CjARKOWK9E_jz2kMzaKFzx0AbLTlp1cVnSWufLsQeMdLS-W_bsHqalJINoRL4vFYy5H-9DZ6y28S26BkXFEvl4pDIjwpU6foPtS_OvjvenuvKMmFpO_CRgFkhVBLgbUYnFMOWjvoT38P_J4Cw6cFKmQzFjfPfo8ktfGCBixvEtOf0mFUV180H4HTPAMMQ85mX_3cMT93n2L0IK6xPSzoJHocSnPV5v_Ytb_wP_gA"
 }
 ```
--- **/api/v1/user/{ID}** : get user info by id  
+- **/api/v1/user/{ID}** : get user info by id  
 Method: `GET`  
 URL: `/api/v1/user/<user id here>`  
 cURL:
@@ -86,7 +86,7 @@ Response:
     "status": 200
 }
 ```
--- **/api/v1/user/balance** : get user balance  
+- **/api/v1/user/balance** : get user's balance base on the supplied token  
 Method: `GET`  
 URL: `/api/v1/user/balance`  
 cURL:
@@ -101,7 +101,7 @@ Response:
     "status": 200
 }
 ```
--- **/api/v1/transactions** : get user transactions  
+- **/api/v1/transactions** : get user's transactions base on the supplied token  
 Method: `GET`  
 URL: `/api/v1/transactions`  
 cURL:
@@ -153,7 +153,7 @@ Response:
     "status": 200
 }
 ```
--- **/api/v1/transaction/depost** : depost amount 
+- **/api/v1/transaction/depost** : depost amount, target will base on the supplied token   
 Method: `POST`  
 URL: `/api/v1/transaction/depost`  
 cURL:
@@ -186,7 +186,7 @@ Response:
     "status": 200
 }
 ```
--- **/api/v1/transaction/send** : send amount to other user  
+- **/api/v1/transaction/send** : send amount to other user  
 Method: `POST`  
 URL: `/api/v1/transaction/send`  
 cURL:
@@ -220,7 +220,7 @@ Response:
     "status": 200
 }
 ```
--- **/api/v1/transaction/multi-send** : send amount to multiple user at the same time   
+- **/api/v1/transaction/multi-send** : send amount to multiple user at the same time   
 Method: `POST`  
 URL: `/api/v1/transaction/multi-send`  
 cURL:
