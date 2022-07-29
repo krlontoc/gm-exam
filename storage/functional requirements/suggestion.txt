@@ -1,0 +1,5 @@
+1. User can send money to multiple users.
+2. User can request money from his added users (eg. Friend or Contact)
+    Note: User that has their "Receive Money Request" on on their Settings will show
+          on the list of users a user can send request to.
+3. Lock setting, user can't send or receive money.
