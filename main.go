@@ -5,6 +5,7 @@ import (
 	intl "gm-exam/initial"
 	auth "gm-exam/src/authenticator"
 	mdlw "gm-exam/src/middlewares"
+	"os"
 
 	"github.com/kataras/iris/v12"
 
@@ -50,5 +51,10 @@ func initApp() *iris.Application {
 
 func main() {
 	app := initApp()
-	app.Listen(":1007")
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "1007"
+	}
+	app.Listen(":" + port)
 }
