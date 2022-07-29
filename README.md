@@ -26,11 +26,17 @@ cURL:
 ```
 curl --location --request GET 'localhost:1007/users'
 ```
-Payload:
-```
-```
 Response:
 ```
+{
+    "data": [
+        {
+            "email_address": "kr@email.com",
+            "full_name": "Kurt Russel"
+        }
+    ],
+    "status": 200
+}
 ```
 
 - **/auth/v1/login** : get access token, token will be use for the other routes.
@@ -47,9 +53,17 @@ curl --location --request POST 'localhost:1007/auth/v1/login' \
 ```
 Payload:
 ```
+{
+    "email_address":"kr@email.com",
+    "password":"Pass123!"
+}
 ```
 Response:
 ```
+{
+    "code": 200,
+    "data": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2YWxpZCI6dHJ1ZSwic2Vzc2lvbiI6eyJpZCI6MSwiY3JlYXRlZF9hdCI6IjIwMjItMDctMjlUMTE6MTc6MTcuODU1NTE1OSswODowMCIsInVwZGF0ZWRfYXQiOiIyMDIyLTA3LTI5VDExOjE3OjE3Ljg1NTUxNTkrMDg6MDAiLCJmdWxsX25hbWUiOiJLdXJ0IFJ1c3NlbCIsImVtYWlsX2FkZHJlc3MiOiJrckBlbWFpbC5jb20ifSwiZXhwIjoxNjU5MDY2NDI0fQ.DIrKQBGpodI6CTfaohxqiyI0rG16UFYO1FivmfdqhvvoERqzzBwPZZipExzn264XguU6RGGDPsGohGwPg8rWpwRQoUsa5Ue5l-rs5WIH2Dxo-9CjARKOWK9E_jz2kMzaKFzx0AbLTlp1cVnSWufLsQeMdLS-W_bsHqalJINoRL4vFYy5H-9DZ6y28S26BkXFEvl4pDIjwpU6foPtS_OvjvenuvKMmFpO_CRgFkhVBLgbUYnFMOWjvoT38P_J4Cw6cFKmQzFjfPfo8ktfGCBixvEtOf0mFUV180H4HTPAMMQ85mX_3cMT93n2L0IK6xPSzoJHocSnPV5v_Ytb_wP_gA"
+}
 ```
 -- **/api/v1/user/{ID}** : get user info by id  
 Method: `GET`  
@@ -59,11 +73,18 @@ cURL:
 curl --location --request GET 'localhost:1007/api/v1/user/1' \
 --header 'Authorization: Bearer <token here>'
 ```
-Payload:
-```
-```
 Response:
 ```
+{
+    "data": {
+        "id": 1,
+        "created_at": "2022-07-29T11:37:45.1469522+08:00",
+        "updated_at": "2022-07-29T11:37:45.1469522+08:00",
+        "full_name": "Kurt Russel",
+        "email_address": "kr@email.com"
+    },
+    "status": 200
+}
 ```
 -- **/api/v1/user/balance** : get user balance  
 Method: `GET`  
@@ -73,11 +94,12 @@ cURL:
 curl --location --request GET 'localhost:1007/api/v1/user/balance' \
 --header 'Authorization: Bearer <token here>'
 ```
-Payload:
-```
-```
 Response:
 ```
+{
+    "data": 15000,
+    "status": 200
+}
 ```
 -- **/api/v1/transactions** : get user transactions  
 Method: `GET`  
@@ -87,11 +109,49 @@ cURL:
 curl --location --request GET 'localhost:1007/api/v1/user/transactions' \
 --header 'Authorization: Bearer <token here>'
 ```
-Payload:
-```
-```
 Response:
 ```
+{
+    "data": [
+        {
+            "id": 4,
+            "created_at": "2022-07-29T11:40:05.6085486+08:00",
+            "updated_at": "2022-07-29T11:40:05.6085486+08:00",
+            "from": 1,
+            "to": 4,
+            "amount": 2500,
+            "message": "Allowance"
+        },
+        {
+            "id": 3,
+            "created_at": "2022-07-29T11:40:05.5937899+08:00",
+            "updated_at": "2022-07-29T11:40:05.5937899+08:00",
+            "from": 1,
+            "to": 5,
+            "amount": 2500,
+            "message": "Allowance"
+        },
+        {
+            "id": 2,
+            "created_at": "2022-07-29T11:39:54.5022579+08:00",
+            "updated_at": "2022-07-29T11:39:54.5022579+08:00",
+            "from": 1,
+            "to": 2,
+            "amount": 5000,
+            "message": "Rent Payment"
+        },
+        {
+            "id": 1,
+            "created_at": "2022-07-29T11:39:40.1977394+08:00",
+            "updated_at": "2022-07-29T11:39:40.1977394+08:00",
+            "from": 0,
+            "to": 1,
+            "amount": 10000,
+            "message": "Deposit Transaction"
+        }
+    ],
+    "status": 200
+}
 ```
 -- **/api/v1/transaction/depost** : depost amount 
 Method: `POST`  
@@ -107,9 +167,24 @@ curl --location --request POST 'localhost:1007/api/v1/transaction/deposit' \
 ```
 Payload:
 ```
+{
+    "amount": 10000
+}
 ```
 Response:
 ```
+{
+    "data": {
+        "id": 1,
+        "created_at": "2022-07-29T11:39:40.1977394+08:00",
+        "updated_at": "2022-07-29T11:39:40.1977394+08:00",
+        "from": 0,
+        "to": 1,
+        "amount": 10000,
+        "message": "Deposit Transaction"
+    },
+    "status": 200
+}
 ```
 -- **/api/v1/transaction/send** : send amount to other user  
 Method: `POST`  
@@ -127,9 +202,23 @@ curl --location --request POST 'localhost:1007/api/v1/transaction/send' \
 ```
 Payload:
 ```
+{
+    "to": "k@email.com",
+    "amount": 5000,
+    "message": "Rent Payment"
+}
 ```
 Response:
 ```
+{
+    "data": {
+        "from": 1,
+        "to": "k@email.com",
+        "amount": 5000,
+        "message": "Rent Payment"
+    },
+    "status": 200
+}
 ```
 -- **/api/v1/transaction/multi-send** : send amount to multiple user at the same time   
 Method: `POST`  
@@ -153,4 +242,47 @@ curl --location --request POST 'localhost:1007/api/v1/transaction/multi-send' \
         }
     ]    
 }'
+```
+Payload:
+```
+{
+    "sends": [
+        {
+            "to": "kl@email.com",
+            "amount": 2500,
+            "message": "Allowance"
+        },
+        {
+            "to": "rl@email.com",
+            "amount": 2500,
+            "message": "Allowance"
+        }
+    ]    
+}
+```
+Response:
+```
+{
+    "data": [
+        {
+            "send": {
+                "to": "kl@email.com",
+                "amount": 2500,
+                "message": "Allowance"
+            },
+            "status": "OK",
+            "title": "Success"
+        },
+        {
+            "send": {
+                "to": "rl@email.com",
+                "amount": 2500,
+                "message": "Allowance"
+            },
+            "status": "OK",
+            "title": "Success"
+        }
+    ],
+    "status": 200
+}
 ```
