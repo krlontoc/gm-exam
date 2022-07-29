@@ -16,9 +16,9 @@ For local testing, use command `go test -v` to run the test.
 
 ## Links
 The app is also upload to heroku, access the site using this [link](https://gm-exam.herokuapp.com/) `https://gm-exam.herokuapp.com`.  
-Get postman collection [here](https://www.getpostman.com/collections/2cdc08395f26e9047e4f) `https://www.getpostman.com/collections/2cdc08395f26e9047e4f`.
+Get import postman collection using this link `https://www.getpostman.com/collections/fdff8f00bb68f534d345`.
 
-## Routes
+## Endpoints
 - **/users** : get list of current users (for ease of use only)  
 Method: `GET`  
 URL: `/users`  
@@ -38,7 +38,6 @@ Response:
     "status": 200
 }
 ```
-
 - **/auth/v1/login** : get access token, token will be use for the other routes.  
 Method: `POST`  
 URL: `/auth/v1/login`  
