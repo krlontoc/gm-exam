@@ -7,10 +7,14 @@ import (
 	mdlw "gm-exam/src/middlewares"
 	"os"
 
+	"github.com/iris-contrib/swagger"
+	"github.com/iris-contrib/swagger/v12/swaggerFiles"
 	"github.com/kataras/iris/v12"
 
 	tnx "gm-exam/src/controllers/transaction"
 	usr "gm-exam/src/controllers/user"
+
+	_ "gm-exam/docs"
 )
 
 func init() {
@@ -25,6 +29,15 @@ func initApp() *iris.Application {
 	app.Get("/", func(ctx iris.Context) {
 		ctx.JSON(iris.Map{"status": iris.StatusOK, "message": "Hi! This is GoMedia Technical Exam"})
 	})
+
+	// Configure the swagger UI page.
+	swaggerUI := swagger.Handler(swaggerFiles.Handler,
+		swagger.URL("http://localhost:1007/swagger/doc.json"), // The url pointing to docs definition.
+		swagger.DeepLinking(true),
+		swagger.Prefix("/swagger"),
+	)
+	app.Get("/swagger", swaggerUI)
+	app.Get("/swagger/{any:path}", swaggerUI)
 
 	// Public Endpoints
 	ath := app.Party("/auth/v1")
@@ -49,6 +62,11 @@ func initApp() *iris.Application {
 	return app
 }
 
+// @title GM Technical Exam
+// @description This is my GoMedia technical exam API docs.
+
+// @host 35.247.166.232
+// @BasePath /api/v1
 func main() {
 	app := initApp()
 

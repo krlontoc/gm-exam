@@ -1,0 +1,40 @@
+basePath: /api/v1
+definitions:
+  models.User:
+    properties:
+      created_at:
+        type: string
+      email_address:
+        type: string
+      full_name:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      updated_at:
+        type: string
+    type: object
+host: 35.247.166.232
+info:
+  contact: {}
+  description: This is my GoMedia technical exam API docs.
+  title: GM Technical Exam
+paths:
+  /user/{ID}:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Invalid payload
+          schema: {}
+        "404":
+          description: Record not found
+          schema: {}
+      summary: get User by ID
+swagger: "2.0"

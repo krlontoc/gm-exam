@@ -36,6 +36,11 @@ func List(ctx iris.Context) {
 	ctx.JSON(iris.Map{"status": iris.StatusOK, "data": data})
 }
 
+// @Summary get User by ID
+// @Success 200 {object} models.User
+// @Failure 400 {object} error "Invalid payload"
+// @Failure 404 {object} error "Record not found"
+// @Router /user/{ID} [get]
 func Get(ctx iris.Context) {
 	param := ctx.Params().Get("ID")
 	var id uint
@@ -49,11 +54,12 @@ func Get(ctx iris.Context) {
 	user := mdls.User{}
 	user.ID = id
 	if err := user.Get("", nil); err != nil {
-		ctx.StopWithProblem(iris.StatusBadRequest, iris.NewProblem().Title(err.Error()))
+		ctx.StopWithProblem(iris.StatusNotFound, iris.NewProblem().Title(err.Error()))
 		return
 	}
 
-	ctx.JSON(iris.Map{"status": iris.StatusOK, "data": user})
+	ctx.StatusCode(iris.StatusOK)
+	ctx.JSON(user)
 }
 
 func GetBalance(ctx iris.Context) {

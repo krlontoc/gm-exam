@@ -1,0 +1,61 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is my GoMedia technical exam API docs.",
+        "title": "GM Technical Exam",
+        "contact": {}
+    },
+    "host": "35.247.166.232",
+    "basePath": "/api/v1",
+    "paths": {
+        "/user/{ID}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "get User by ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid payload",
+                        "schema": {}
+                    },
+                    "404": {
+                        "description": "Record not found",
+                        "schema": {}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.User": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "email_address": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
